@@ -1,4 +1,4 @@
-# 🌪️ QueueStorm Investigator — Ticket Classification & Analysis Service
+# QueueStorm Investigator — Ticket Classification & Analysis Service
 
 > An intelligent, high-availability ticket classification and transaction investigation copilot built to parse multi-lingual complaints, investigate transaction anomalies, and generate secure support workflows within seconds under high-traffic digital finance campaign surges.
 > 
@@ -224,7 +224,7 @@ Our model execution matrix isolates specific architectural nodes to maximize tok
 Our model execution matrix isolates specific architectural nodes to maximize token efficiency, conserve cloud API quotas, and remain highly cost-aware. Repeated queries or high-frequency ticket signatures during campaign spikes are immediately intercepted by Redis, mitigating external API expenses altogether.
 The primary layer leverages Groq's high-speed processing utilizing a custom Key Rotation Pool that alternates API headers round-robin across multiple keys, safely distributing load and bypassing rate limits without structural pricing penalties. Furthermore, if network or key-exhaustion failovers occur, the system relies on the highly affordable Gemini tier, or cascades down to the local matcher which yields a strict **$0.00 operational footprint** on host compute hardware.
 
-### 📋 Strict Schema & HTTP Contract Compliance
+### Strict Schema & HTTP Contract Compliance
 
 * **Echoing Identifiers:** The `ticket_id` sent in the incoming request is parsed via Pydantic and explicitly echoed back in the final JSON response without transformation.
 
