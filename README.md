@@ -18,7 +18,7 @@ During high-traffic fintech campaigns, support centers face massive ticket surge
 
 ---
 
-### 🏗️ Architecture & Tech Stack
+### Architecture & Tech Stack
 
 Our application is built as a highly resilient, monolithic, latency-optimized API deployed on **Microsoft Azure App Service (Linux)** using GitHub Actions for CI/CD continuous deployment:
 
@@ -38,7 +38,7 @@ Our application is built as a highly resilient, monolithic, latency-optimized AP
 
 ---
 
-### 🧠 System Workflow Pipeline
+### System Workflow Pipeline
 
 The chart below illustrates our ultra-resilient request lifecycle built to satisfy strict digital financial SLAs (**p95 latency $\le$ 5s, timeout < 30s**):
 
@@ -155,7 +155,7 @@ python test_locally.py
 
 ---
 
-## 🌩️ How to Deploy to Azure
+## How to Deploy to Azure
 
 This application is fully containerized and optimized for deployment on **Microsoft Azure App Service (Linux)** using GitHub Actions for continuous delivery:
 
@@ -167,16 +167,49 @@ This application is fully containerized and optimized for deployment on **Micros
 python -m uvicorn main:app --host 0.0.0.0 --port 8000
 
 ```
-
-
 5. Save the configuration matrix and restart the Web App instance. The system will deploy instantly.
 
+---
+
+## How to Test the API (For Judges)
+
+You can interact with our live deployment using any of the following methods:
+
+### 1. Browser (Health Check & UI)
+- **Health Check API:** Simply navigate to [Live Link/health](https://ewuparasitesqueuestorm-api-h6ehgwb3eta4hrcc.southeastasia-01.azurewebsites.net/health) to verify the required `{"status":"ok"}` contract.
+- **Frontend UI:** Navigate to the base URL `[Live Link/]` to interact with the static React frontend natively bundled by FastAPI.
+
+### 2. cURL Command (Bash/Linux/Mac)
+```bash
+curl -X POST "https://ewuparasitesqueuestorm-api-h6ehgwb3eta4hrcc.southeastasia-01.azurewebsites.net/analyze-ticket" \
+-H "Content-Type: application/json" \
+-d '{
+    "ticket_id": "TCK-001",
+    "complaint": "I sent 500 tk to 01711111111 by mistake! Please reverse it.",
+    "transaction_history": [
+        {"transaction_id": "TXN-123", "type": "transfer", "amount": 500.0, "status": "completed", "timestamp": "2026-06-25T10:00:00Z", "counterparty": "01711111111"}
+    ]
+}'
+```
+
+### 3. PowerShell (Windows)
+```powershell
+$payload = @{
+    ticket_id = "TCK-001"
+    complaint = "I sent 500 tk to 01711111111 by mistake! Please reverse it."
+    transaction_history = @(
+        @{ transaction_id="TXN-123"; type="transfer"; amount=500.0; status="completed"; timestamp="2026-06-25T10:00:00Z"; counterparty="01711111111" }
+    )
+} | ConvertTo-Json -Depth 10
+
+Invoke-RestMethod -Uri "https://ewuparasitesqueuestorm-api-h6ehgwb3eta4hrcc.southeastasia-01.azurewebsites.net/analyze-ticket" -Method POST -Body $payload -ContentType "application/json"
+```
 ---
 
 ### AI Approach
 QueueStorm implements a high-availability, hybrid cloud-to-edge architecture functioning as an analytical investigator rather than a basic text classification module. Incoming CRM ticket payloads containing raw user complaints are matched against localized token lookups in Redis before invoking cloud layers. The application uses Structured Outputs / JSON Mode forced via strict Pydantic schemas to ensure that the platform never breaks due to raw text markdown variations.
 
-## 🤖 Model Architecture & Cost Reasonings
+## Model Architecture & Cost Reasonings
 
 Our model execution matrix isolates specific architectural nodes to maximize token efficiency, conserve cloud API quotas, and remain highly cost-aware:
 
@@ -211,7 +244,7 @@ The primary layer leverages Groq's high-speed processing utilizing a custom Key 
 * `500 Internal Error`: Catches critical framework drops cleanly, obscuring internal stack traces, private variables, or active tokens from leaking into external logs.
 ---
 
-## 🛡️ Safety, Logic & Limitations
+## Safety, Logic & Limitations
 
 ### Safety Logic (Scoring Criteria)
 
