@@ -40,8 +40,6 @@ yarn-error.log*
 .yarn/
 .yarn-integrity
 
-# Ignore frontend completely (teammate will handle it)
-frontend/
 
 # IDE files
 .vscode/
@@ -52,5 +50,3 @@ frontend/
 *.sln
 *.sw?
 
-# Ignore README so teammate can push it later without conflicts
-README.md
