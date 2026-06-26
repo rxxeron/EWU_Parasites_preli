@@ -206,10 +206,10 @@ Invoke-RestMethod -Uri "https://ewuparasitesqueuestorm-api-h6ehgwb3eta4hrcc.sout
 ```
 ---
 
-### AI Approach
+## AI Approach
 QueueStorm implements a high-availability, hybrid cloud-to-edge architecture functioning as an analytical investigator rather than a basic text classification module. Incoming CRM ticket payloads containing raw user complaints are matched against localized token lookups in Redis before invoking cloud layers. The application uses Structured Outputs / JSON Mode forced via strict Pydantic schemas to ensure that the platform never breaks due to raw text markdown variations.
 
-## Model Architecture & Cost Reasonings
+### Model Architecture & Cost Reasonings
 
 Our model execution matrix isolates specific architectural nodes to maximize token efficiency, conserve cloud API quotas, and remain highly cost-aware:
 
